@@ -7,7 +7,6 @@ import cookieParser from 'cookie-parser';
 import productRouter from './routes/productRouter.js';  
 import orderRouter from './routes/orderRoutes.js';  
 import path from 'path';  
-import adminUserRouter from './routes/adminUserRoute.js';
  
 
 const __dirname = path.resolve();  
@@ -17,8 +16,7 @@ app.use(express.json());
 app.use(cookieParser());  
 app.use(cors());  
 
-app.use('/api/order', orderRouter);  
-app.use('/api/admin', adminUserRouter);  
+app.use('/api/order', orderRouter);    
 app.use('/api/user', userRouter);  
 app.use('/api/product', productRouter);  
 

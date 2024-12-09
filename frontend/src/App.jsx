@@ -20,8 +20,6 @@ import OrderScreen from './screen/OrderScreen';
 import OrderHistoryScreen from './screen/OrderHistoryScreen';
 import SearchScreen from './screen/SearchScreen';
 import AdminDashboardScreen from './screen/AdminDashboardSreen';
-import ForgotPasswordScreen from './screen/ForgotPassword';
-import ResetPasswordScreen from './screen/ResetPassowrd';
 import AdministratorScreen from './screen/AdministratorScreen';
 import ProtectedAdminRoute from './mainpage/ProtectedAdminRoute';
 
