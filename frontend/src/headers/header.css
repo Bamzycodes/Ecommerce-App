@@ -1,0 +1,16 @@
+header a {
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+}
+
+h1 {
+    display: flex;
+    direction: initial;
+    justify-content: center;
+}
+.header-blur {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
