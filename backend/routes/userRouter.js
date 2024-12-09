@@ -2,8 +2,6 @@ import express from 'express';
 import bcrypt from 'bcryptjs'
 import User from '../model/userModel.js';
 import { generateToken, isAuth, isAdmin } from '../utils.js';
-import nodemailer from 'nodemailer';
-import crypto from 'crypto';
 
 const userRouter = express.Router();
 
@@ -102,62 +100,5 @@ userRouter.post(
 
   }
 );
-
-const transporter = nodemailer.createTransport({
-  service: 'Gmail', 
-  auth: {
-    user: "samuelosho83@gmail.com",
-    pass: "354657kuit",
-  },
-});
-
-userRouter.post(
-  "/forgot-password", async (req, res) => {
-    const user = await User.findOne({ email: req.body.email });
-  if (!user) {
-    return res.status(404).send({ message: 'User not found' });
-  }
-
-  // Generate OTP
-  const token = crypto.randomBytes(3).toString('hex');
-  user.token = token;
-  user.tokenExpiry = Date.now() + 10 * 60 * 1000;
-
-  await user.save();
-
-  // Send OTP via email
-  const mailOptions = {
-    from: "samuelosho303@gmail.com",
-    to: user.email,
-    subject: 'Password Reset OTP',
-    text: `Your OTP for password reset is ${token}. It is valid for 10 minutes.`,
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return res.status(500).send({ message: 'Error sending email' });
-    }
-    res.send({ message: 'OTP sent to your email' });
-  });
-
-
-  })
-
-userRouter.post('/reset-password', async (req, res) => {
-  const { email, token, newPassword } = req.body;
-  const user = await User.findOne({ email });
-
-  if (!user || user.token !== token || user.tokenExpiry < Date.now()) {
-    return res.status(400).send({ message: 'Invalid or expired OTP' });
-  }
-
-  // Reset password
-  user.password = bcrypt.hashSync(newPassword);
-  user.token = undefined; 
-  user.tokenExpiry = undefined;
-  await user.save();
-
-  res.send({ message: 'Password has been reset successfully' });
-});
 
 export default userRouter;

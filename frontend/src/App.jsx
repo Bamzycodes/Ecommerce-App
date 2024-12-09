@@ -58,8 +58,6 @@ function App() {
 </Route>
 
           <Route path="/signin" element={<SigninScreen />} />
-          <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
-          <Route path="/reset-password" element={<ResetPasswordScreen />} />
           <Route path="/shipping" element={<ShippingAddressScreen />} />
           <Route path="/placeorder" element={<PlaceOrderScreen />} />
           <Route path="/payment" element={<PaymentMethodScreen />} />

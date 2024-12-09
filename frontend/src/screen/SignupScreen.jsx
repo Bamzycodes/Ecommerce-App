@@ -38,7 +38,7 @@ export default function SignupScreen() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 rounded-lg shadow-md">
+    <div className="max-w-lg mx-auto p-6 rounded-lg bg-white shadow-md">
       <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
       <form onSubmit={submitHandler} className="space-y-4">
         {/* Name Input */}

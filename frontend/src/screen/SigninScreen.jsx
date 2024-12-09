@@ -45,7 +45,7 @@ export default function SigninScreen() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="card w-full max-w-md bg-base-200 shadow-lg p-5">
+      <div className="card w-full max-w-md bg-base-200 shadow-lg bg-white p-5">
         <h1 className="text-2xl font-bold text-center mb-5">Sign In</h1>
         <form onSubmit={submitHandler}>
           <div className="form-control mb-3">
@@ -90,8 +90,9 @@ export default function SigninScreen() {
         <div className="text-center mt-3">
           <p className="text-sm">
             <div className="text-sm text-center">
-          <Link to="/forgot-password" className="text-blue-500 hover:underline">
-           Forgot Password
+            Don't have an account?{' '}
+          <Link to="/signup" className="text-blue-500 hover:underline">
+           click here to sign up.
           </Link>
         </div>
           </p>
